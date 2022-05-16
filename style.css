@@ -1,0 +1,64 @@
+                    body {
+                        text-align: center;
+                    }
+                    
+                    table {
+                        border-collapse: collapse;
+                        width: 80%;
+                    }
+                    
+                    tr:nth-child(even) {
+                        background-color: #f2f2f2;
+                    }
+                    
+                    tr:hover {
+                        background-color: #ddd;
+                    }
+                    
+                    td,
+                    th {
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                    }
+                    
+                    th {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        text-align: left;
+                        background-color: #04AA6D;
+                        color: white;
+                    }
+                    
+                    .footer {
+                        display: flex;
+                    }
+                    
+                    .footer div {
+                        flex: 1;
+                        /*   border: 1px solid;
+                         */
+                        margin-top: 1em;
+                        padding: 1em;
+                        background-color: #A9FBD7;
+                    }
+                    
+                    .btn {
+                        display: flex;
+                    }
+                    
+                    .btncount {
+                        width: 2em;
+                        height: 2em;
+                        margin: 1em;
+                    }
+                    
+                    .adding {
+                        background-color: #A9FBD7;
+                        display: flex;
+                    }
+                    
+                    .AddBtns {
+                        flex: 1;
+                        padding: 1em;
+                        padding-left: 25em;
+                    }

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Taxi rank</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <div x-data={countOne:0,countTwo:0,countTree:0,countFour:0,taxiTrips:0,taxiTripOne:0,taxiTripTwo:0,taxiTripThree:0,routeTotalPrice:0.00,available:4,available1:5,available2:3,available3:6,route2TotalPrice:0,route3TotalPrice:0,route4TotalPrice:0,totalFare:0.00,AddTaxi:false}>
+
+        <div class="adding">
+            <h3>Taxi App</h3>
+            <div class="AddBtns">
+                <span><button x-on:click="AddTaxi =! AddTaxi" @click="">Add Taxi</button></span>
+                <span><button x-on:click=" ">Add Route</button></span>
+                <br><br>
+                <div x-show="AddTaxi">
+                    <strong>Add a taxi to Johannesburg taxi rank</strong>
+                    <input type="text">
+                    <br><br>
+                    <strong>Taxi registration number</strong>
+                    <input type="text" placeholder="e.g CA 12352">
+                    <br><br>
+                    <button @click="">Add</button>
+                </div>
+            </div>
+
+
+        </div>
+        <hr>
+        <div>
+            <strong>Total price made a day</strong>R
+            <span x-text="totalFare.toFixed(2) " class="totalFare ">0.00</span>
+        </div>
+        <br>
+        <table>
+            <tr>
+                <th>Departure</th>
+                <th>Destination</th>
+                <th>Passenger Actions</th>
+                <th>Taxi Trips</th>
+                <th>Taxi fare</th>
+                <th>Total fare</th>
+                <th>Taxi Avail</th>
+            </tr>
+            <tr>
+
+                <tr>
+                    <td>Johannesburg</td>
+                    <td>Vaal</td>
+                    <td><span>
+                        <div class="btn ">
+                            <button @click="countOne++,routeTotalPrice+=10.99,totalFare+=10.99 " class="btncount ">+</button> 
+                            <p x-text="countOne ">0</p>
+                            <button @click="countOne--,routeTotalPrice-=10.99,totalFare+=10.99 " class="btncount ">-</button>
+                        </div></span></td>
+                    <td><span>
+                        <template x-if="countOne>= 5">
+                    <!-- <p class="" x-text="countOne-=5"></p> -->
+                    <button class="" @click="countOne -=5,taxiTrips+=1, available--">leave</button>
+                    </template>
+                    <template x-if="countOne < 5">
+                            <button class="" @click="">leave</button>
+                        </template>
+
+                    <!-- <button  type="submit" @click="countOne,available--">leave</button> -->
+                    <span x-text="taxiTrips"></span>
+                        </span>
+                    </td>
+                    <td><span><p>R10.99</p></span></td>
+
+                    <td>R<span x-text="routeTotalPrice.toFixed(2)" class="routeTotalPrice">0.00</span></td>
+                    <td><span class="available" x-text="available">0</span></td>
+
+                </tr>
+                <tr>
+                    <td>Johannesburg</td>
+                    <td>Orlando</td>
+                    <td><span>
+                        <div class="btn">
+                        <button @click="countTwo++,route2TotalPrice+=14.99,totalFare+=14.99" class="btncount">+</button>
+                        <p x-text="countTwo">0</p>
+                        <button @click="countTwo--,route2TotalPrice-=14.99,totalFare-=14.99" class="btncount">-</button>
+                    </div></span></td>
+                    <td><span>
+                        <template x-if="countTwo >= 5">
+                            <button class="" @click="countTwo -=5,taxiTripOne+=1, available1--" >leave</button>
+                        </template>
+                        <template x-if="countTwo < 5">
+                            <button class="" @click="">leave</button>
+                        </template>
+
+                        <span x-text="taxiTripOne"></span>
+                        </span>
+                    </td>
+
+                    <td><span><p>R14.99</p></span></td>
+                    <td>R<span x-text="route2TotalPrice.toFixed(2)" class="routeTotalPrice">0.00</span></td>
+                    <td><span x-text="available1" class="available">0</span></td>
+
+                </tr>
+                <tr>
+                    <td>Johannesburg</td>
+                    <td>Maboneng</td>
+                    <td><span>
+                        <div class="btn">
+                        <button @click="countTree++,route3TotalPrice+=16.99,totalFare+=16.99" class="btncount">+</button>
+                        <p x-text="countTree">0</p>
+                        <button @click="countTree--,route3TotalPrice-=16.99,totalFare-=16.99" class="btncount">-</button>
+                    </div> </span></td>
+
+                    <td><span>
+                        <template x-if="countTree >= 5">
+                            <button class="" @click="countTree -=5,taxiTripTwo+=1, available2--" >leave</button>
+                        </template>
+                        <template x-if="countTree < 5">
+                            <button class="" @click="">leave</button>
+                        </template>
+
+                        <span x-text="taxiTripTwo"></span>
+                        </span>
+                    </td>
+
+                    <td><span><p>R16.99</p></span></td>
+                    <td>R<span x-text="route3TotalPrice.toFixed(2)" class="totalFare">0.00</span></td>
+                    <td><span x-text="available2" class="available">0</span></td>
+
+
+                </tr>
+                <tr>
+                    <td>Johannesburg</td>
+                    <td>Soweto</td>
+                    <td><span>
+                        <div class="btn">
+                        <button @click="countFour++,route4TotalPrice+=18.99,totalFare+=18.99" class="btncount">+</button>
+                        <p x-text="countFour">0</p>
+                        <button @click="countFour--,route4TotalPrice-=18.99,totalFare-=18.99" class="btncount">-</button></div>
+                    </span></td>
+
+                    <td><span>
+                        <template x-if="countFour >= 5">
+                            <button class="" @click="countFour -=5,taxiTripThree+=1, available3--" >leave</button>
+                        </template>
+                        <template x-if="countFour < 5">
+                            <button class="" @click="">leave</button>
+                        </template>
+
+                        <span x-text="taxiTripThree"></span>
+                        </span>
+                    </td>
+                    <td><span><p>R18.99</p></span></td>
+                    <td>R<span x-text="route4TotalPrice.toFixed(2)" class="totalFare">0.00</span></td>
+                    <td><span x-text="available3" class="available">0</span></td>
+
+                </tr>
+            </tr>
+
+
+
+
+        </table>
+    </div>
+    <div class="footer ">
+        <div class="contact ">
+            <strong>Contact us at:</strong> (021)-541-1000
+
+            <strong>twitter /fb /insta </strong> @MTNTAXIRANK
+        </div>
+        <div class="address ">
+            MTN Taxi rank
+            <br> Mtn Road
+            <br> Johannesburg
+            <br> 1604
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>
